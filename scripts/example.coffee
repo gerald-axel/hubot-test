@@ -20,7 +20,12 @@ module.exports = (robot) ->
     res.send "Claro que sí, si @Xava es chief también tu."  
     
   robot.hear /test/i, (res) ->
-    res.send "Test"
+    console.log(res)
+    if (exec 'git log').code != 0
+      echo 'Error: Git commit failed'
+      exit 1
+      
+    res.send "Test2"
      
   #
   # robot.respond /open the (.*) doors/i, (res) ->
