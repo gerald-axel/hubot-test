@@ -7,6 +7,7 @@
 #   Uncomment the ones you want to try and experiment with.
 #
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+require 'shelljs/global'
 
 module.exports = (robot) ->
 
@@ -19,14 +20,17 @@ module.exports = (robot) ->
   robot.hear /chief/i, (res) ->
     res.send "Claro que sí, si @Xava es chief también tu."  
     
-  robot.hear /test/i, (res) ->
-    console.log(res)
-    if (exec 'git log').code != 0
-      echo 'Error: Git commit failed'
-      exit 1
-      
-    res.send "Test2"
+  robot.hear /git/i, (res) ->
+    command = res.message.text
+    
+    log = exec("#{command}")
+    res.send log
      
+  robot.hear /linux/i, (res) ->
+    command = res.message.text
+
+    log = exec("#{command}")
+    res.send log
   #
   # robot.respond /open the (.*) doors/i, (res) ->
   #   doorType = res.match[1]
