@@ -15,20 +15,21 @@ module.exports = (robot) ->
      res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
      
   robot.hear /guapo/i, (res) ->
-     res.send "Extremadamente guapo gerald!"
-     
+     res.send "ha ha ha! Si! deberias ponerte a jugar gay soccer con el chava"
+  
+  robot.hear /donas/i, (res) ->
+    res.send "@team ya chole pue"
+    
   robot.hear /chief/i, (res) ->
     res.send "Claro que sí, si @Xava es chief también tu."  
     
   robot.hear /git/i, (res) ->
     command = res.message.text
-    
     log = exec("#{command}")
     res.send log
      
   robot.hear /linux/i, (res) ->
-    command = res.message.text
-
+    command = res.message.text.replace('linux', '')
     log = exec("#{command}")
     res.send log
   #
